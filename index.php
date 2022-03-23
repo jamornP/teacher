@@ -107,7 +107,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <!-- <div class="col">
                 <div class="card mb-3">
                     <div class="card-header bg-primary text-white">รายชื่อทำแบบประเมิน</div>
                     <div class="card-body">
@@ -116,7 +116,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>ชื่อ</th>
-                                    <!-- <th>email</th> -->
+                                   
                                    
                                 </tr>
                             </thead>
@@ -141,7 +141,7 @@
                         </table>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <?php } ?>
     </div>
