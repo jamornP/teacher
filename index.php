@@ -13,12 +13,12 @@
         <div class="row mt-5">
             <div class="col">
                 <div class="card mb-3">
-                    <div class="card-header bg-warning text-white">กรอกชื่อ</div>
+                    <div class="card-header bg-warning text-white">กรอกข้อมูล</div>
                     <div class="card-body">
                         <form action="" method="POST">
                             <div class="form-group">
-                                <label for="">ชื่อ</label>
-                                <input type="text" class="form-control" name="fullname">
+                                <label for="">ชื่อ *(เฉพาะชื่อเท่านั้น)</label>
+                                <input type="text" class="form-control" name="fullname" autofocus>
                             </div>
                             <button type="submit" class="btn btn-success mt-2" name="submit">ค้นหา</button>
                         </form>
@@ -122,7 +122,8 @@
                             </thead>
                             <tbody>
                             <?php
-                                 $Sregisters3 = $registerObj->getRegisterByTel($register['tel'],'tb_register3');
+                            if(isset($register['tel'])){
+                                $Sregisters3 = $registerObj->getRegisterByTel($register['tel'],'tb_register3');
                                  $n=0;
                                 
                                 foreach($Sregisters3 as $Sregister3) {
@@ -135,6 +136,8 @@
                                         </tr>
                                     ";
                                 }
+                            }
+                                 
                             ?>
                                 
                             </tbody>
