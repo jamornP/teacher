@@ -32,5 +32,21 @@ class Register extends Db {
         $data = $stmt->fetchAll();
         return $data;
     }
+
+    public function getRegisterByTel($tel,$tb) {
+        $sql = "
+            SELECT 
+                * 
+            FROM 
+                ".$tb."
+            WHERE 
+                tel = '".$tel."'
+             
+        ";
+        $stmt = $this->pdo->query($sql);
+        $stmt->execute(); 
+        $data = $stmt->fetchAll();
+        return $data;
+    }
 }
 ?>

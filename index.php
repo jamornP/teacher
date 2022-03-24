@@ -107,7 +107,7 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="col">
+            <div class="col">
                 <div class="card mb-3">
                     <div class="card-header bg-primary text-white">รายชื่อทำแบบประเมิน</div>
                     <div class="card-body">
@@ -122,7 +122,7 @@
                             </thead>
                             <tbody>
                             <?php
-                                 $Sregisters3 = $registerObj->getRegisterByName($_REQUEST['fullname'],'tb_register2');
+                                 $Sregisters3 = $registerObj->getRegisterByTel($register['tel'],'tb_register3');
                                  $n=0;
                                 
                                 foreach($Sregisters3 as $Sregister3) {
@@ -130,7 +130,7 @@
                                     echo "
                                         <tr>
                                             <td>{$n}</td>
-                                            <td>{$Sregister3['fullname']}</td>
+                                            <td>{$Sregister3['school']}</td>
                                            
                                         </tr>
                                     ";
@@ -141,7 +141,7 @@
                         </table>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
         <?php } ?>
     </div>
