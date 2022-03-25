@@ -13,7 +13,7 @@
         <div class="row mt-5">
             <div class="col">
                 <div class="card mb-3">
-                    <div class="card-header bg-warning text-white">กรอกข้อมูล</div>
+                    <div class="card-header bg-info text-white">กรอกข้อมูล</div>
                     <div class="card-body">
                         <form action="" method="POST">
                             <div class="form-group">
@@ -36,8 +36,8 @@
 
         
         <div class="row mt-5">
-            <div class="col">
-                <div class="card mb-3">
+            <div class="col-md">
+                <div class="card mb-3 h-100">
                     <div class="card-header bg-primary text-white">รายชื่อลงทะเบียนประสงค์ที่จะอบรม(ก่อนวันอบรม)</div>
                     <div class="card-body">
                         <table class="table">
@@ -45,6 +45,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>ชื่อ</th>
+                                    <th>email</th>
                                     
                                     
                                 </tr>
@@ -61,6 +62,7 @@
                                         <tr>
                                             <td>{$n}</td>
                                             <td>{$register['fullname']}</td>
+                                            <td>{$register['email']}</td>
                                             
                                         </tr>
                                     ";
@@ -72,9 +74,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card mb-3">
-                    <div class="card-header bg-primary text-white">รายชื่อลงทะเบียนเข้าอบรม(วันที่อบรม)</div>
+            <div class="col-md">
+                <div class="card mb-3 h-100">
+                    <div class="card-header bg-warning text-white">รายชื่อลงทะเบียนเข้าอบรม(วันที่อบรม)</div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
@@ -107,9 +109,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card mb-3">
-                    <div class="card-header bg-primary text-white">รายชื่อทำแบบประเมิน</div>
+            <div class="col-md">
+                <div class="card mb-3 h-100">
+                    <div class="card-header bg-success text-white">รายชื่อทำแบบประเมิน หลังวันที่อบรม</div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
