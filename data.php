@@ -3,6 +3,7 @@
     use App\Model\Register;
     $registerObj = new Register();
     $r1 = $registerObj->getAllRegister();
+    
     $i=0;
     $j=0;
     foreach($r1 as $t) {
@@ -13,11 +14,11 @@
         if((isset($r2)) AND (isset($r3)) ){
             $j++;
             $h[$i]['b']="YES";
-            $m[$i]['num']=$j;
-            $m[$i]['name']=$t['name'];
-            $m[$i]['surname']=$t['surname'];
-            $m[$i]['tel']=$t['tel'];
-            $m[$i]['email']=$t['email'];
+            
+            $m[$j]['name']=$t['name'];
+            $m[$j]['surname']=$t['surname'];
+            $m[$j]['tel']=$t['tel'];
+            $m[$j]['email']=$t['email'];
            
         }else{
             $h[$i]['b']="NO";
