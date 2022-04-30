@@ -7,38 +7,62 @@ class Register extends Db {
     public function getAllRegister() {
         $sql = "
             SELECT * 
-            FROM tb_register1
-            ORDER BY fullname
+            FROM tb_r1
+            ORDER BY id
         ";
         $stmt = $this->pdo->query($sql);
         $data = $stmt->fetchAll();
         return $data;
     }
-
-
-    public function getRegisterByName($fullname,$tb) {
+    public function getRegisterById($id) {
+        $sql = "
+            SELECT 
+                * 
+            FROM 
+                tb_r1
+            WHERE 
+                id =".$id."
+        ";
+        $stmt = $this->pdo->query($sql);
+        $stmt->execute(); 
+        $data = $stmt->fetchAll();
+        return $data[0];
+    }
+    public function getRegisterByName($name,$tb) {
         $sql = "
             SELECT 
                 * 
             FROM 
                 ".$tb."
             WHERE 
-                fullname LIKE'".$fullname."%'
-            ORDER BY 
-                fullname
+                name ='".$name."'
         ";
         $stmt = $this->pdo->query($sql);
         $stmt->execute(); 
         $data = $stmt->fetchAll();
         return $data;
     }
-
-    public function getRegisterByTel($tel,$tb) {
+    public function getRegisterByNS($name,$surname) {
         $sql = "
             SELECT 
                 * 
             FROM 
-                ".$tb."
+                tb_r2
+            WHERE 
+                name ='".$name."' AND surname ='".$surname."'
+        ";
+        $stmt = $this->pdo->query($sql);
+        $stmt->execute(); 
+        $data = $stmt->fetchAll();
+        return $data[0];
+    }
+
+    public function getRegisterByTel($tel) {
+        $sql = "
+            SELECT 
+                * 
+            FROM 
+                tb_r3
             WHERE 
                 tel = '".$tel."'
              
@@ -46,7 +70,41 @@ class Register extends Db {
         $stmt = $this->pdo->query($sql);
         $stmt->execute(); 
         $data = $stmt->fetchAll();
-        return $data;
+        return $data[0];
+    }
+
+    public function addTeacher($teacher) {
+        $sql = "
+            INSERT INTO `tb_ca` (
+                id, 
+                t_id, 
+                a, 
+                b, 
+                c, 
+                title, 
+                name, 
+                surname, 
+                tel, 
+                email, 
+                school
+            ) VALUES (
+                NULL, 
+                :t_id, 
+                :a, 
+                :b, 
+                :c, 
+                :title, 
+                :name, 
+                :surname, 
+                :tel, 
+                :email, 
+                :school
+            )
+        ";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($teacher);
+        return $this->pdo->lastInsertId();
+
     }
 }
 ?>
