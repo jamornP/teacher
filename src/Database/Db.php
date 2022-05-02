@@ -5,7 +5,7 @@ use PDO;
 
 class Db{
     private $host = "localhost";
-	private $user = "usersci";
+	private $user = "root";
 	private $password = "sciencepwd";
 	private $dbName = "db_teacher";
 
@@ -18,8 +18,10 @@ class Db{
 	protected function connect() {
 		$dsn = "mysql:host={$this->host};dbname={$this->dbName}";
 		$pdo = new PDO($dsn, $this->user, $this->password);
+		$pdo->exec("set names utf8");
 		$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		date_default_timezone_set('Asia/Bangkok');
 		return $pdo;
 	}
 }
