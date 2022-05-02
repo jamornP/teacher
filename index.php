@@ -91,15 +91,60 @@
                                             <td>{$n}</td>
                                             <td>{$register['title']}</td>
                                             <td>{$register['name']}</td>
-                                            <td>{$register['surname']}</td>
-                                            
+                                            <td>{$register['surname']}</td>                                            
                                             <td>{$register['tel']}</td>
                                             <td>
-                                            <a href='check.php?id={$register['id']}&a=YES'>ตรวจสอบ</a>
-                                            
-                                            </td>
-                                            
-                                            
+                                                <a href='check.php?id={$register['id']}&a=YES'>ตรวจสอบ</a>                                            
+                                            </td>                                          
+                                        </tr>
+                                    ";
+                                }
+                            ?>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md">
+                <div class="card mb-3 h-100">
+                    <div class="card-header bg-success text-white">ข้อมูลที่ยืนยันแล้ว</div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>คำนำหน้า</th>
+                                    <th>ชื่อ</th>
+                                    <th>นามสกุล</th>
+                                    <th>เบอร์</th>
+                                    <th>email</th>
+                                    <th></th>
+                                    
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                                
+
+                                $registers = $registerObj->getAllCa();
+                                 $n=0;
+                                foreach($registers as $register) {
+                                    $n++;
+                                    echo "
+                                        <tr>
+                                            <td>{$n}</td>
+                                            <td>{$register['title']}</td>
+                                            <td>{$register['name']}</td>
+                                            <td>{$register['surname']}</td>                                            
+                                            <td>{$register['tel']}</td>
+                                            <td>{$register['email']}</td>
+                                            <td>
+                                                <a href='check.php?id={$register['id']}&a=YES'>ตรวจสอบ</a>                                            
+                                            </td>                                          
                                         </tr>
                                     ";
                                 }

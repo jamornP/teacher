@@ -69,7 +69,7 @@
                                 <div class="col-sm-12 col-md-4 col-lg-3">
                                     <div class="form-group">
                                         <label for="title" class="form-label">คำนำหน้า</label>
-                                        <input type="text" id="title" class="form-control" name="title"  required value="<?php echo $register['title'];?>">
+                                        <input type="text" id="title" class="form-control" name="title"  required value="<?php echo $register['title'];?>" autofocus>
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-4 col-lg-3">
@@ -98,14 +98,17 @@
                                 </div>
                                 <div class="col-sm-12 col-md-4 col-lg">
                                     <div class="form-group">
-                                        <label for="school" class="form-label">โรงเรียน</label>
+                                        <label for="school" class="form-label">โรงเรียน <b class = "text-danger">ใส่เฉพาะชื่อโรงเรียนเท่านั้น</b> เช่น <b class = "text-danger">โรงเรียนกรุงเทพคริสเตียนวิทยาลัย</b></label>
                                         <input type="text" id="school" class="form-control" name="school"  required value="<?php echo $register['school'];?>">
                                     </div>
                                 </div>
                             </div>
+                            <p><b>หมายเหตุ : </b></p>
                             <br>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+                                <?php if(($_REQUEST['a']=='YES')AND($b=='YES')AND($c=='YES')){ ?>
                                 <button type="submit" class="btn btn-success mr-auto text-white">ยืนยัน</button>
+                                <?php } ?>
                                 <a href="/teacher/" class="btn btn-warning text-white">ย้อนกลับ</a>
                             </div>
                         </form>

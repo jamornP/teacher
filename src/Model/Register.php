@@ -14,6 +14,16 @@ class Register extends Db {
         $data = $stmt->fetchAll();
         return $data;
     }
+    public function getAllCa() {
+        $sql = "
+            SELECT * 
+            FROM tb_ca
+            ORDER BY name
+        ";
+        $stmt = $this->pdo->query($sql);
+        $data = $stmt->fetchAll();
+        return $data;
+    }
     public function getRegisterById($id) {
         $sql = "
             SELECT 
