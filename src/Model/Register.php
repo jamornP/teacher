@@ -38,6 +38,20 @@ class Register extends Db {
         $data = $stmt->fetchAll();
         return $data[0];
     }
+    public function getRegisterByIdCa($id) {
+        $sql = "
+            SELECT 
+                * 
+            FROM 
+                tb_ca
+            WHERE 
+                t_id =".$id."
+        ";
+        $stmt = $this->pdo->query($sql);
+        $stmt->execute(); 
+        $data = $stmt->fetchAll();
+        return $data[0];
+    }
     public function getRegisterByName($name,$tb) {
         $sql = "
             SELECT 

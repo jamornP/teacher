@@ -2,7 +2,15 @@
 <?php 
     use App\Model\Register;
     $registerObj = new Register();
-    $register = $registerObj->getRegisterById($_REQUEST['id']);
+    $reg = $registerObj->getRegisterByIdCa($_REQUEST['id']);
+    if(isset($reg)){
+        $register = $reg;
+        $d = 'NO';
+    }else{
+        $register = $registerObj->getRegisterById($_REQUEST['id']);
+        $d = 'YES';
+    }
+    
     $r2 = $registerObj->getRegisterByNS($register['name'],$register['surname']);
     $r3 = $registerObj->getRegisterByTel($register['tel']);
 
@@ -58,7 +66,7 @@
         <div class="row mt-5">
             <div class="col">
                 <div class="card mb-3">
-                    <div class="card-header bg-info text-white">ยืนบันข้อมูล</div>
+                    <div class="card-header bg-info text-white">ยืนยันข้อมูล</div>
                     <div class="card-body">
                         <form action="save.php" method="POST">
                             <div class="row">
@@ -86,7 +94,7 @@
                                 </div>
                                 <div class="col-sm-12 col-md-4 col-lg-3">
                                     <div class="form-group">
-                                        <label for="tel" class="form-label">เบอร์</label>
+                                        <label for="tel" class="form-label">เบอร์ ไม่ต้องมี '-'</label>
                                         <input type="text" id="tel" class="form-control" name="tel"  required value="<?php echo $register['tel'];?>">
                                     </div>
                                 </div>
@@ -98,15 +106,20 @@
                                 </div>
                                 <div class="col-sm-12 col-md-4 col-lg">
                                     <div class="form-group">
-                                        <label for="school" class="form-label">โรงเรียน <b class = "text-danger">ใส่เฉพาะชื่อโรงเรียนเท่านั้น</b> เช่น <b class = "text-danger">โรงเรียนกรุงเทพคริสเตียนวิทยาลัย</b></label>
+                                        <label for="school" class="form-label">โรงเรียน <b class = "text-danger">ใส่เฉพาะชื่อโรงเรียนเท่านั้น</b> เช่น <b class = "text-danger">"โรงเรียนกรุงเทพคริสเตียนวิทยาลัย"</b></label>
                                         <input type="text" id="school" class="form-control" name="school"  required value="<?php echo $register['school'];?>">
                                     </div>
                                 </div>
                             </div>
-                            <p><b>หมายเหตุ : </b></p>
                             <br>
+                            <p><b>หมายเหตุ : <br></b>1.ข้อมูลที่ยืนยันจำเป็นต้องเป็นข้อมูลที่ถูกต้องเพราะข้อมูลนี้จะนำใปใช้ออกใบประกาศ รบกวนตรวจสอบให้ถูกต้องก่อนกด ยืนยัน <br>
+                            2.ถ้าท่านใดเคยยืนยันข้อมูลแล้ว จะไม่สามารถยืนยันข้อมูลได้อีก <br>
+                            3.ท่านใดที่ไม่มีปุ่ม ยืนยัน ขึ้นแสดง</p>
+                            <br>
+                            <div class="text-center"><h3 class="mt-5 text-danger"><b>หมดเขตยืนยันข้อมูล วันพุธที่ 4 พฤษภาคม 2565 เวลา 23:59 น.</b></h3></div>
+                            
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
-                                <?php if(($_REQUEST['a']=='YES')AND($b=='YES')AND($c=='YES')){ ?>
+                                <?php if(($_REQUEST['a']=='YES')AND($b=='YES')AND($c=='YES')AND($d=='YES')){ ?>
                                 <button type="submit" class="btn btn-success mr-auto text-white">ยืนยัน</button>
                                 <?php } ?>
                                 <a href="/teacher/" class="btn btn-warning text-white">ย้อนกลับ</a>

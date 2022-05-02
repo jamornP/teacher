@@ -42,8 +42,8 @@
         }
         ?>
     <div class="container">
-       
-        <div class="row mt-5">
+        <h3 class="mt-5 text-danger"><b>หมดเขตยืนยันข้อมูล วันพุธที่ 4 พฤษภาคม 2565 เวลา 23:59 น.</b></h3>
+        <div class="row mt-3">
             <div class="col">
                 <div class="card mb-3">
                     <div class="card-header bg-info text-white">กรอกข้อมูล</div>
@@ -59,7 +59,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-5">
+        <div class="row">
             <div class="col-md">
                 <div class="card mb-3 h-100">
                     <div class="card-header bg-primary text-white">ข้อมูลการลงทะเบียน</div>
@@ -68,20 +68,14 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>คำนำหน้า</th>
                                     <th>ชื่อ</th>
                                     <th>นามสกุล</th>
-                                    
                                     <th>เบอร์</th>
                                     <th></th>
-                                    
-                                    
                                 </tr>
                             </thead>
                             <tbody>
                             <?php
-                                
-
                                 $registers = $registerObj->getRegisterByName($_REQUEST['fullname'],'tb_r1');
                                  $n=0;
                                 foreach($registers as $register) {
@@ -89,12 +83,12 @@
                                     echo "
                                         <tr>
                                             <td>{$n}</td>
-                                            <td>{$register['title']}</td>
+                                            
                                             <td>{$register['name']}</td>
                                             <td>{$register['surname']}</td>                                            
                                             <td>{$register['tel']}</td>
-                                            <td>
-                                                <a href='check.php?id={$register['id']}&a=YES'>ตรวจสอบ</a>                                            
+                                            <td class='text-right'>
+                                                <a class='btn btn-warning btn-sm text-white' href='check.php?id={$register['id']}&a=YES'>ยืนยัน</a>                                            
                                             </td>                                          
                                         </tr>
                                     ";
@@ -110,7 +104,7 @@
         <div class="row mt-5">
             <div class="col-md">
                 <div class="card mb-3 h-100">
-                    <div class="card-header bg-success text-white">ข้อมูลที่ยืนยันแล้ว</div>
+                    <div class="card-header bg-success text-white">ข้อมูลที่ยืนยันแล้วทั้งหมด(เรียงตามชื่อ)</div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
@@ -121,7 +115,7 @@
                                     <th>นามสกุล</th>
                                     <th>เบอร์</th>
                                     <th>email</th>
-                                    <th></th>
+                                    <th>โรงเรียน</th>
                                     
                                     
                                 </tr>
@@ -142,9 +136,7 @@
                                             <td>{$register['surname']}</td>                                            
                                             <td>{$register['tel']}</td>
                                             <td>{$register['email']}</td>
-                                            <td>
-                                                <a href='check.php?id={$register['id']}&a=YES'>ตรวจสอบ</a>                                            
-                                            </td>                                          
+                                            <td>{$register['school']}</td>                                          
                                         </tr>
                                     ";
                                 }
