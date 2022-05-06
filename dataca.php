@@ -19,8 +19,8 @@
                 $n[$j]['name']=$r4['name'];
                 $n[$j]['surname']=$r4['surname'];
                 $n[$j]['tel']=$r4['tel'];
-                $n[$j]['email']=$t['email'];
-                $n[$j]['school']=$t['school'];
+                $n[$j]['email']=$r4['email'];
+                $n[$j]['school']=$r4['school'];
                 $n[$j]['r1']='Yes';
                 $n[$j]['r2']='Yes';
                 $n[$j]['r3']='Yes';
@@ -35,6 +35,7 @@
                 $m[$j]['surname']=$t['surname'];
                 $m[$j]['tel']=$t['tel'];
                 $m[$j]['email']=$t['email'];
+                $m[$j]['school']=$t['school'];
                 $m[$j]['r1']='Yes';
                 $m[$j]['r2']='Yes';
                 $m[$j]['r3']='Yes';
@@ -70,7 +71,7 @@
 ?>
 <div class="container">
     <div class="row mt-5">
-        <div class="col-md-4">
+        <div class="col-md">
             <div class="card mb-3 h-100">
                 <div class="card-header bg-primary text-white">ข้อมูลการลงทะเบียน</div>
                 <div class="card-body">
@@ -82,7 +83,8 @@
                                 <th>ชื่อ</th>
                                 <th>นามสกุล</th>
                                 <th>เบอร์</th>
-                                <th></th>
+                                <th>email</th>
+                                <th>โรงเรียน</th>
                                 
                                 
                             </tr>
@@ -92,52 +94,7 @@
                             
 
                             // $registers = $registerObj->getRegisterByName($_REQUEST['fullname'],'tb_r1');
-                                $l=0;
-                            foreach($m as $teachers) {
-                                $l++;
-                                echo "
-                                    <tr>
-                                        <td>{$l}</td>
-                                        <td>{$teachers['title']}</td>
-                                        <td>{$teachers['name']}</td>
-                                        <td>{$teachers['surname']}</td>
-                                        <td>{$teachers['tel']}</td>
-                                        <td></td>
-                                        
-                                        
-                                    </tr>
-                                ";
-                            }
-                        ?>
-                            
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card mb-3 h-100">
-                <div class="card-header bg-primary text-white">ข้อมูลการลงทะเบียน</div>
-                <div class="card-body">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>คำนำหน้า</th>
-                                <th>ชื่อ</th>
-                                <th>นามสกุล</th>
-                                <th>เบอร์</th>
-                                <th></th>
-                                
-                                
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                            
-
-                            // $registers = $registerObj->getRegisterByName($_REQUEST['fullname'],'tb_r1');
-                                $k=0;
+                            $k=0;
                             foreach($n as $ta) {
                                 $k++;
                                 echo "
@@ -147,52 +104,27 @@
                                         <td>{$ta['name']}</td>
                                         <td>{$ta['surname']}</td>
                                         <td>{$ta['tel']}</td>
+                                        <td>{$ta['email']}</td>
+                                        <td>{$ta['school']}</td>
                                         <td></td>
                                         
                                         
                                     </tr>
                                 ";
                             }
-                        ?>
-                            
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card mb-3 h-100">
-                <div class="card-header bg-primary text-white">ข้อมูลการลงทะเบียน</div>
-                <div class="card-body">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>คำนำหน้า</th>
-                                <th>ชื่อ</th>
-                                <th>นามสกุล</th>
-                                <th>เบอร์</th>
-                                <th></th>
-                                
-                                
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                            
-
-                             $regis = $registerObj->getAllCa();
-                                $p=0;
-                            foreach($regis as $tca) {
-                                $p++;
+                                $l=$k;
+                            foreach($m as $teachers) {
+                                $l++;
                                 echo "
                                     <tr>
-                                        <td>{$p}</td>
-                                        <td>{$tca['title']}</td>
-                                        <td>{$tca['name']}</td>
-                                        <td>{$tca['surname']}</td>
-                                        <td>{$tca['tel']}</td>
-                                        <td></td>
+                                        <td>{$l}</td>
+                                        <td>{$teachers['title']}</td>
+                                        <td>{$teachers['name']}</td>
+                                        <td>{$teachers['surname']}</td>
+                                        <td>{$teachers['tel']}</td>
+                                        <td>{$teachers['email']}</td>
+                                        <td>{$teachers['school']}</td>
+                                        
                                         
                                         
                                     </tr>
@@ -205,6 +137,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 </div>
 

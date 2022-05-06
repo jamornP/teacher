@@ -8,7 +8,7 @@ class Register extends Db {
         $sql = "
             SELECT * 
             FROM tb_r1
-            ORDER BY id
+            ORDER BY name
         ";
         $stmt = $this->pdo->query($sql);
         $data = $stmt->fetchAll();
