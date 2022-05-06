@@ -3,30 +3,25 @@
     use App\Model\Register;
     $registerObj = new Register();
     $r1 = $registerObj->getAllRegister();
-    
+    // print_r($r1);
     $i=0;
-    $j=0;
+    // $j=0;
     foreach($r1 as $t) {
-        $i++;
+      
         $r2 = $registerObj->getRegisterByNS($t['name'],$t['surname']);
         $r3 = $registerObj->getRegisterByTel($t['tel']);
-       
-        if((isset($r2)) AND (isset($r3)) ){
-            $j++;
-            $h[$i]['b']="YES";
-            $m[$j]['id']=$t['id'];
-            $m[$j]['title']=$t['title'];
-            $m[$j]['name']=$t['name'];
-            $m[$j]['surname']=$t['surname'];
-            $m[$j]['tel']=$t['tel'];
-            $m[$j]['email']=$t['email'];
-            $m[$j]['r1']='Yes';
-            $m[$j]['r2']='Yes';
-            $m[$j]['r3']='Yes';
-           
+        $r1[$i]['r1']='YES';
+        if(isset($r2)) {
+            $r1[$i]['r2']='YES';
         }else{
-            $h[$i]['b']="NO";
+            $r1[$i]['r2']='NO';
         }
+        if(isset($r3)) {
+            $r1[$i]['r3']='YES';
+        }else{
+            $r1[$i]['r3']='NO';
+        }
+        $i++;
     }
     
 ?>
@@ -64,7 +59,9 @@
                                 <th>ชื่อ</th>
                                 <th>นามสกุล</th>
                                 <th>เบอร์</th>
-                                <th></th>
+                                <th>รอบ1</th>
+                                <th>รอบ2</th>
+                                <th>รอบ3</th>
                                 
                                 
                             </tr>
@@ -75,20 +72,28 @@
 
                             // $registers = $registerObj->getRegisterByName($_REQUEST['fullname'],'tb_r1');
                                 $n=0;
-                            foreach($m as $teachers) {
-                                $n++;
+                                $j=1;
+                                // echo "<pre>";
+                                // print_r($r1);
+                                // echo "</pre>";
+                            foreach($r1 as $teachers) {
+                                
                                 echo "
                                     <tr>
-                                        <td>{$n}</td>
+                                        <td>{$j}</td>
                                         <td>{$teachers['title']}</td>
                                         <td>{$teachers['name']}</td>
                                         <td>{$teachers['surname']}</td>
                                         <td>{$teachers['tel']}</td>
-                                        <td></td>
+                                        <td>{$teachers['r1']}</td>
+                                        <td>{$teachers['r2']}</td>
+                                        <td>{$teachers['r3']}</td>
                                         
                                         
                                     </tr>
                                 ";
+                                $n++;
+                                $j++;
                             }
                         ?>
                             
